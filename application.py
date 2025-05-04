@@ -8,13 +8,13 @@ NVIDIA_API_URL = "https://integrate.api.nvidia.com/v1"
 NVIDIA_API_KEY = "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"
 MODEL = "nvidia/llama-3.1-nemotron-70b-instruct"
 
-app = FastAPI()
+application = FastAPI()
 
 # Request model
 class Question(BaseModel):
     question: str
 
-@app.post("/ask")
+@application.post("/ask")
 async def ask_question(payload: Question):
     try:
         # Prepare request payload
@@ -46,4 +46,5 @@ async def ask_question(payload: Question):
 
 # Run the app
 if __name__ == "__main__":
-    uvicorn.run("app:app", host="0.0.0.0", port=8000)
+    uvicorn.run("application:application", host="0.0.0.0", port=8000)
+
